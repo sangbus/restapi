@@ -1,19 +1,19 @@
 package com.example.demo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
 @Table(name="members")
-public class Board {
+@NoArgsConstructor
+public class Member {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="idx")
     private Long idx;
     private String mname;
     private String phone;
@@ -21,11 +21,12 @@ public class Board {
     private String address;
     private String promotion_day;
     private String bank_info;
-
-    public Board(){
-
-    }
-    public Board(String mname, String phone, String grade, String address, String promotion_day, String bank_info) {
+    public Member(String mname,
+                 String phone,
+                 String grade,
+                 String address,
+                 String promotion_day,
+                 String bank_info) {
         this.mname = mname;
         this.phone = phone;
         this.grade = grade;
