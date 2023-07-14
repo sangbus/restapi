@@ -1,9 +1,12 @@
 package com.example.demo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -19,13 +22,14 @@ public class Member {
     private String phone;
     private String grade;
     private String address;
-    private String promotion_day;
+    @JsonFormat(pattern = "yyyy-mm-dd")
+    private LocalDateTime promotion_day;
     private String bank_info;
     public Member(String mname,
                  String phone,
                  String grade,
                  String address,
-                 String promotion_day,
+                 LocalDateTime promotion_day,
                  String bank_info) {
         this.mname = mname;
         this.phone = phone;
